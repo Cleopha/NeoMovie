@@ -1,0 +1,49 @@
+name: Continuous Integration Backend
+
+on:
+  push:
+    branches: ["master", "develop"]
+  pull_request:
+    branches: ["master", "develop"]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    env:
+      DB_PORT: 5432
+      DB_USER: root
+      DB_PASS: mypassword
+      DB_NAME: area
+      DB_USER_SCHEMA: user
+      DB_WORKFLOW_SCHEMA: workflow
+      DB_CREDENTIAL_SCHEMA: credential
+      REDIS_PORT: 6379
+      REDIS_PASS: pass
+      API_HOST: localhost
+      USER_API_PORT: 3000
+      USER_API_SESSION_SECRET: secret
+      USER_API_SESSION_MAX_AGE: 2160000
+      USER_API_SESSION_SECURE: false
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Docker Compose
+        run: docker compose up -d
+
+      - name: Wait for User API
+        timeout-minutes: 360
+        run: |
+          API_PORT=$USER_API_PORT ./backend/util/wait-for-api.sh
+
+      - name: Run Postman suite for userAPI
+        uses: matt-ball/newman-action@master
+        with:
+          collection: backend/test/postman/User-API-collection.json
+          environment: backend/test/postman/NeoMovie-environment.json
+
+      - name: Down docker
+        run: docker compose stop

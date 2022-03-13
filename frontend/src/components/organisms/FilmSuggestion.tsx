@@ -1,18 +1,13 @@
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialIcons, AntDesign } from '@expo/vector-icons';
-import { ImageBackground, View, StyleSheet, Animated } from 'react-native';
-
-import { data } from '../../fakeData/post'
-import { Box, Center, FlatList, Image, Pressable, Text } from 'native-base';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import ImageFilm from '../atoms/imageFilm';
+import { View, Animated } from 'react-native';
+import { FlatList, Pressable, Text } from 'native-base';
 import { Modalize } from 'react-native-modalize';
-import { Host, Portal } from 'react-native-portalize';
+import { Portal } from 'react-native-portalize';
+
+import ImageFilm from '../atoms/imageFilm';
 import { ModalFilmInfos } from '../molecules/modal';
-import { FilmsData } from '../../fakeData/films';
 import { NeoMovieSDKContext } from '../../SDK/neoMovieSDK';
 import { FilmInfoData, FilmInfosData, GenreData } from '../../SDK/Film/Film';
 
@@ -53,7 +48,7 @@ export default function FilmSuggestion({ genre }: IFilmSuggestionProps) {
                         {({ isHovered, isFocused, isPressed }: any) => {
                             return (
                                 <>
-                                    <ImageFilm url={"https://image.tmdb.org/t/p/w300" + item.poster_path} isPressed={isPressed} />
+                                    <ImageFilm url={"https://image.tmdb.org/t/p/w300" + item.poster_path} isPressed={isPressed} type={""}/>
                                     <Portal>
                                         <ModalFilmInfos ref={modalizeRef} animated={animated} film={item} />
                                     </Portal>

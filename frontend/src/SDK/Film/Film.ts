@@ -1,5 +1,7 @@
 import axios from "axios";
 
+export const { API_TOKEN } = process.env;
+
 export interface FilmInfoData {
     adult: boolean,
     backdrop_path: string,
@@ -34,11 +36,12 @@ export interface GenreListData {
 }
 
 export default class FilmInfos {
-    constructor() { }
+    private searchPageCount = 1;
+    constructor() { API_TOKEN }
 
     async getFilmByGenre(genre: number): Promise<FilmInfosData> {
         const res = await axios.get<FilmInfosData>(
-            "https://api.themoviedb.org/3/discover/movie?api_key=73268820761df1e7f34f0e56ed8d0121&language=fr&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_watch_monetization_types=flatrate&with_genres=" + genre
+            "https://api.themoviedb.org/3/discover/movie?api_key=" + API_TOKEN + "&language=fr&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_watch_monetization_types=flatrate&with_genres=" + genre
         )
         
         return res.data
@@ -46,9 +49,30 @@ export default class FilmInfos {
 
     async getGenreList(): Promise<GenreListData> {
         const res = await axios.get<GenreListData>(
-            "https://api.themoviedb.org/3/genre/movie/list?api_key=73268820761df1e7f34f0e56ed8d0121&language=fr"
+            "https://api.themoviedb.org/3/genre/movie/list?api_key=" + API_TOKEN + "&language=fr"
         )
 
         return res.data
     }
+
+    async getSearchFilm(text: string): Promise<FilmInfosData> {
+        this.searchPageCount = 1;
+
+        const res = await axios.get<FilmInfosData>(
+            "https://api.themoviedb.org/3/search/movie?api_key=" + API_TOKEN + "&language=fr&query=" + text + "&page=1"
+        )
+
+        return res.data
+    }
+
+    async retrieveSearchFilmNext(text: string): Promise<FilmInfosData> {
+        this.searchPageCount += 1;
+
+        const res = await axios.get<FilmInfosData>(
+            "https://api.themoviedb.org/3/search/movie?api_key=" + API_TOKEN + "&language=fr&query=" + text + "&page=" + this.searchPageCount.toString()
+        )
+
+        return res.data
+    }
+    
 }

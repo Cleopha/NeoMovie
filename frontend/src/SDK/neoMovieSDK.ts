@@ -1,4 +1,5 @@
 import React from "react";
+
 import FilmInfos from "./Film/Film";
 
 class NeoMovieSDK {

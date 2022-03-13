@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { useRef, forwardRef, useState } from 'react';
-import {  Animated, Dimensions } from 'react-native';
-import {Text, Box, HStack, Icon, IconButton, Image, View, VStack } from 'native-base';
+
+import { Animated, Dimensions } from 'react-native';
+import { Text, Box,  Icon, IconButton, Image, View } from 'native-base';
 import { Modalize } from 'react-native-modalize';
+import { MaterialIcons, AntDesign, Entypo } from '@expo/vector-icons';
+
 
 import { useCombinedRefs } from './utils';
-import { MaterialIcons, AntDesign, Entypo } from '@expo/vector-icons';
 import { FilmInfoData } from '../../SDK/Film/Film';
 
 
@@ -36,12 +38,13 @@ export const ModalFilmInfos = forwardRef(({ animated, film }: IpropsModal, ref) 
                 />
                 <Box alignItems="center">
                     <Box alignItems="flex-start" flexDirection={'row'}>
-                        <IconButton icon={<Icon as={AntDesign} name="heart" size={16} />} borderRadius="full" />
+                        <IconButton icon={<Icon as={AntDesign} name="hearto" size={16} />} borderRadius="full" />
                     </Box>
-                    <IconButton icon={<Icon as={AntDesign} name="clouddownload" />} borderRadius="full" style={{alignSelf: "flex-end", position: "absolute"}} />
+                    <IconButton icon={<Icon as={MaterialIcons} name="playlist-add" />} borderRadius="full" style={{ alignSelf: "flex-end", position: "absolute" }} />
+                    <IconButton icon={<Icon as={AntDesign} name="eyeo" />} borderRadius="full" style={{ alignSelf: "flex-start", position: "absolute" }} />
                 </Box>
                 <Text bold fontSize={"lg"} alignSelf={"center"}>{film.title}</Text>
-                
+
                 <Text><Text bold>Sortie: </Text>{film.release_date}</Text>
 
                 <Text bold fontSize={"lg"}>Description</Text>

@@ -140,25 +140,4 @@ export const FilmsData = [
         "vote_average": 5.4,
         "vote_count": 126
     },
-    {
-        "adult": false,
-        "backdrop_path": "/cugmVwK0N4aAcLibelKN5jWDXSx.jpg",
-        "genre_ids": [
-            16,
-            28,
-            14,
-            12
-        ],
-        "id": 768744,
-        "original_language": "ja",
-        "original_title": "僕のヒーローアカデミア THE MOVIE ワールド ヒーローズ ミッション",
-        "overview": "Un mystérieux groupe terroriste appelé \"Humanize\" croit fermement à la \"théorie de l'apocalypse de la singularité des Quirks\". Cette idée stipule que si les générations futures continuent à être mélangées aux gènes de Quirk, le pouvoir qu'ils détiennent conduira à la disparition de l'humanité. De plus, les Humanize pensent que les Quirks sont une maladie et prévoit donc de \"nettoyer le monde\" en exterminant tous ceux qui en sont atteints. Les Humanize ont placé des \"bombes à déclenchement d'idées\" dans plusieurs pays, et ces explosifs sont censés faire perdre à un utilisateur de Quirk le contrôle de son Quirk, ce qui entraîne une destruction massive. Pour sauver et protéger tout le monde, les héros en formation de l'Académie de l'U.A., s'unissent pour contrecarrer les efforts du mystérieux groupe.",
-        "popularity": 1411.84,
-        "poster_path": "/yjdOpEtlzlAnw4Kw0NGw25VrbIb.jpg",
-        "release_date": "2021-08-06",
-        "title": "My Hero Academia: World Heroes' Mission",
-        "video": false,
-        "vote_average": 7.3,
-        "vote_count": 109
-    },
 ]

@@ -8,13 +8,13 @@ import { NeoMovieSDK, NeoMovieSDKContext } from './src/SDK/neoMovieSDK';
 
 export default function App() {
   return (
-    <SafeAreaProvider>
+    <>
       <StatusBar barStyle="dark-content" />
       <NativeBaseProvider>
         <NeoMovieSDKContext.Provider value={new NeoMovieSDK}>
           <PrincipalView />
         </NeoMovieSDKContext.Provider>
       </NativeBaseProvider>
-    </SafeAreaProvider>
+    </>
   );
 }

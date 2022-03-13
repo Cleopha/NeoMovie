@@ -18,13 +18,11 @@ jobs:
       DB_USER: root
       DB_PASS: mypassword
       DB_NAME: area
-      DB_USER_SCHEMA: user
-      DB_WORKFLOW_SCHEMA: workflow
-      DB_CREDENTIAL_SCHEMA: credential
+      DB_SCHEMA: user
       REDIS_PORT: 6379
       REDIS_PASS: pass
       API_HOST: localhost
-      USER_API_PORT: 3000
+      API_PORT: 3000
       USER_API_SESSION_SECRET: secret
       USER_API_SESSION_MAX_AGE: 2160000
       USER_API_SESSION_SECURE: false

@@ -23,9 +23,9 @@ jobs:
       REDIS_PASS: pass
       API_HOST: localhost
       API_PORT: 3000
-      USER_API_SESSION_SECRET: secret
-      USER_API_SESSION_MAX_AGE: 2160000
-      USER_API_SESSION_SECURE: false
+      API_SESSION_SECRET: secret
+      API_SESSION_MAX_AGE: 2160000
+      API_SESSION_SECURE: false
     steps:
       - uses: actions/checkout@v2
 
@@ -35,7 +35,7 @@ jobs:
       - name: Wait for User API
         timeout-minutes: 360
         run: |
-          API_PORT=$USER_API_PORT ./backend/util/wait-for-api.sh
+          API_PORT=$API_PORT ./backend/util/wait-for-api.sh
 
       - name: Run Postman suite for userAPI
         uses: matt-ball/newman-action@master
